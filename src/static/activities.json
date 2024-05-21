@@ -958,5 +958,20 @@
 "average_speed": 3.7485254798126957,
 "source": "gpx.py -- https://github.com/tkrajina/gpxpy",
 "streak": 1
+},
+{
+"run_id": 1716231990000,
+"name": "2024-05-20 \u4e0b\u5348  \u9a91\u884c",
+"distance": 24059.31603890418,
+"moving_time": "1:16:12",
+"type": "Ride",
+"start_date": "2024-05-20 19:06:30",
+"start_date_local": "2024-05-21 03:06:30",
+"location_country": "\u5409\u9f99\u4e00\u8857, \u65b0\u534e\u793e\u533a, \u4e2d\u548c\u8857\u9053, \u9ad8\u65b0\u533a\uff08\u5357\u533a\uff09, \u53cc\u6d41\u533a, \u6210\u90fd\u5e02, \u56db\u5ddd\u7701, 610093, \u4e2d\u56fd",
+"summary_polyline": "ywkyDemhzRbBD}B_CBkB}D_A_@ZxBIWiE^oHa@sEFcNDiFd@eA~wAMfDYfL`@lHWfKmCfQgO|EwAxEYtEn@bI|CdYtNlIbAjTClf@qFde@uKlBN~CaBrGiBvTmEdCf@r^vOvElApHt@xKS~GoA~LyDzLyAtRCxPh@`BW~GbAvIlEtFpGjYfo@vClCvBx@dHx@r@c@oAo@yHw@gEeCFw@oAm@{AcFmTse@aGoHyGiDeK}As`@_@oMz@wZ~GwLVeFe@{FuAi]qOuE{@yCPkTzFeH|DkCQ}e@nKcc@bFsUDcFc@yc@qSqHmAeFX{D~@_EbCmN|L_CbAaEh@ozA^uZYNro@dBn@",
+"average_heartrate": null,
+"average_speed": 5.262317593811063,
+"source": "gpx.py -- https://github.com/tkrajina/gpxpy",
+"streak": 1
 }
 ]
