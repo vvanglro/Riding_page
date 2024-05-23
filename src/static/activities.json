@@ -988,5 +988,35 @@
 "average_speed": 7.228,
 "source": "strava",
 "streak": 2
+},
+{
+"run_id": 11470881425,
+"name": "\u508d\u665a\u9a91\u884c",
+"distance": 24698.2,
+"moving_time": "0:54:54",
+"type": "Ride",
+"start_date": "2024-05-22 11:30:14+00:00",
+"start_date_local": "2024-05-22 19:30:14",
+"location_country": "\u5409\u9f99\u4e00\u8857, \u65b0\u534e\u793e\u533a, \u4e2d\u548c\u8857\u9053, \u9ad8\u65b0\u533a\uff08\u5357\u533a\uff09, \u53cc\u6d41\u533a, \u6210\u90fd\u5e02, \u56db\u5ddd\u7701, 610093, \u4e2d\u56fd",
+"summary_polyline": "_|kyDeaizR@mCEwD@aQBoBBw@Hc@RWXORET?vHHzAEpGB|@Bj@JJ?~@Sp@CtII|E?zGGfI?hHCrHDx@Bd@FE{@Bc@DGb@WHMDS@c@@iDHiAIeAAu@A_NCoDD}A?uFCgCB{@AiKAs@AkCMeFCoC@mJDeBNgC^kC`@sBb@yAn@mC^yBXaCDkADkB@yG@SDKKiA?iA@qHFcB@km@CiW?aB@WEq@A}@?q`@@iDFcCTeDTcBToAZoA\\kAh@yA\\{@dAoBzAaCdFmH~@kApAsBhCmDdAkAv@w@~AmA~@m@bAg@rAk@bA]tNqDzZqHl@Mn@GrCs@|Bg@rBYvBUdCOxBC`B@`JRzB?dYz@`FLfB@nD?dBGzDY`C_@fCi@pCw@zB{@fFwBnX}LRIF@LCl@c@jJgEjEyBjC_BhD{B~^oXn@[R?FBp@`AhBzBz@rApH`KtAvBj@fATj@b@rARt@XxAPzAFdADvAEzCEt@q@nGa@zCmAbMgB|O_@`C_Et_@Y`CoA~L{ClYiAfLoEbb@gGfm@qB|QsBjNcBrKm@fEy@`FoBzNa@dC[nCiAlHK`AENCZe@`D{B`M[~AKTe@f@a@j@a@ViCj@eOdEB?u@b@mA`@ULSNa@l@OLa@N{@Ta@@u@WYCK@gCl@{B^eCp@iAb@eGtAgFbA}GjA}A\\{BZwD`@}G~@{CTsD`@oBP_BFsB@mJCgBG_BB}AG{AWa@Kc@Qm@S{@_@qTkKgEoB_Bq@gBm@eAUyAQ}ACqBF_AH{@JaBb@yAj@iBdAkC|B{EnEyBfBm@^y@b@w@Xw@Ro@BoAVu@JoCHoRC]A[GaEHcDDoRG",
+"average_heartrate": 161.0,
+"average_speed": 7.498,
+"source": "strava",
+"streak": 3
+},
+{
+"run_id": 11470881344,
+"name": "\u508d\u665a\u9a91\u884c",
+"distance": 1088.7,
+"moving_time": "0:04:50",
+"type": "Ride",
+"start_date": "2024-05-22 12:54:16+00:00",
+"start_date_local": "2024-05-22 20:54:16",
+"location_country": "\u89c2\u4e1c\u4e00\u8857, \u65b0\u534e\u793e\u533a, \u4e2d\u548c\u8857\u9053, \u9ad8\u65b0\u533a\uff08\u5357\u533a\uff09, \u53cc\u6d41\u533a, \u6210\u90fd\u5e02, \u56db\u5ddd\u7701, 610093, \u4e2d\u56fd",
+"summary_polyline": "}sjyDgehzRAtCEpCCLIJMFQ@eGG{B_@aA[kHuC",
+"average_heartrate": 133.7,
+"average_speed": 3.754,
+"source": "strava",
+"streak": 3
 }
 ]
