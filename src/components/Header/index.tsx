@@ -12,6 +12,9 @@ const Header = () => {
             <picture>
               <img className="h-16 w-16 rounded-full" alt="logo" src={logo} />
             </picture>
+            <picture>
+              <img className="h-16 w-16 rounded-full" alt="logo" src="https://raw.githubusercontent.com/vvanglro/iBeats/main/files/heart.svg" />
+            </picture>
           </Link>
         </div>
         <div className="w-3/4 text-right">
