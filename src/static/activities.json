@@ -1288,5 +1288,20 @@
 "average_speed": 1.135,
 "source": "strava",
 "streak": 1
+},
+{
+"run_id": 11795091854,
+"name": "\u6668\u95f4\u884c\u8d70",
+"distance": 1349.7,
+"moving_time": "0:02:02",
+"type": "Hike",
+"start_date": "2024-07-02 01:47:24+00:00",
+"start_date_local": "2024-07-02 09:47:24",
+"location_country": "China",
+"summary_polyline": "",
+"average_heartrate": 110.9,
+"average_speed": 11.063,
+"source": "strava",
+"streak": 1
 }
 ]
