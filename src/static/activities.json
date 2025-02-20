@@ -1648,5 +1648,35 @@
 "average_speed": 1.156,
 "source": "strava",
 "streak": 1
+},
+{
+"run_id": 13670218659,
+"name": "\u508d\u665a\u9a91\u884c",
+"distance": 2031.6,
+"moving_time": "0:07:24",
+"type": "Ride",
+"start_date": "2025-02-13 10:05:53+00:00",
+"start_date_local": "2025-02-13 18:05:53",
+"location_country": "\u6842\u9f99\u5927\u6865, Tianhua1st Road, \u5929\u534e\u793e\u533a, \u6842\u6eaa\u8857\u9053, \u9ad8\u65b0\u533a\uff08\u5357\u533a\uff09, \u6b66\u4faf\u533a, \u6210\u90fd\u5e02, \u56db\u5ddd\u7701, 610093, \u4e2d\u56fd",
+"summary_polyline": "mymyDs`fzRAmABq@Hi@P_@hJkPtEmHpBqDdA_BrImNrFiJJIXE\\WHKL[DWA}@BYbAmDJIFAT@PFhAt@",
+"average_heartrate": 110.9,
+"average_speed": 4.576,
+"source": "strava",
+"streak": 1
+},
+{
+"run_id": 13670216613,
+"name": "\u5348\u540e\u884c\u8d70",
+"distance": 988.0,
+"moving_time": "0:17:45",
+"type": "Hike",
+"start_date": "2025-02-16 05:15:06+00:00",
+"start_date_local": "2025-02-16 13:15:06",
+"location_country": "\u65b0\u8054\u793e\u533a, \u5e78\u798f\u8857\u9053, \u90fd\u6c5f\u5830\u5e02, \u6210\u90fd\u5e02, \u56db\u5ddd\u7701, \u4e2d\u56fd",
+"summary_polyline": "y{`|DuvtwRt@XZAUVoB~A",
+"average_heartrate": 98.5,
+"average_speed": 0.928,
+"source": "strava",
+"streak": 1
 }
 ]
