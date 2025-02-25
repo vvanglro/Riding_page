@@ -1678,5 +1678,50 @@
 "average_speed": 0.928,
 "source": "strava",
 "streak": 1
+},
+{
+"run_id": 13712018626,
+"name": "\u5348\u540e\u9a91\u884c",
+"distance": 1236.3,
+"moving_time": "0:03:17",
+"type": "Ride",
+"start_date": "2025-02-20 06:03:02+00:00",
+"start_date_local": "2025-02-20 14:03:02",
+"location_country": "\u6842\u9f99\u5927\u6865, Tianhua1st Road, \u5929\u534e\u793e\u533a, \u6842\u6eaa\u8857\u9053, \u9ad8\u65b0\u533a\uff08\u5357\u533a\uff09, \u6b66\u4faf\u533a, \u6210\u90fd\u5e02, \u56db\u5ddd\u7701, 610093, \u4e2d\u56fd",
+"summary_polyline": "iumyDgfezRA^s@~Bq@Da@AsADkB@g@F}ABoA?qDFyAAy@DGDKXCX@lCKjEId@a@|@If@",
+"average_heartrate": 149.0,
+"average_speed": 6.276,
+"source": "strava",
+"streak": 1
+},
+{
+"run_id": 13712018637,
+"name": "\u508d\u665a\u9a91\u884c",
+"distance": 2940.4,
+"moving_time": "0:15:32",
+"type": "Ride",
+"start_date": "2025-02-20 10:15:07+00:00",
+"start_date_local": "2025-02-20 18:15:07",
+"location_country": "\u4e16\u7eaa\u57ce\u8def, \u5929\u534e\u793e\u533a, \u6842\u6eaa\u8857\u9053, \u9ad8\u65b0\u533a\uff08\u5357\u533a\uff09, \u6b66\u4faf\u533a, \u6210\u90fd\u5e02, \u56db\u5ddd\u7701, 610093, \u4e2d\u56fd",
+"summary_polyline": "mhnyDc`ezRfCEzA@rCKxDCVGJ[\\YLQFUB[@cBF}@GUQ]Q_AWeAcAgDYuAQsAGoAGsEBw@Jk@l@aAZo@lAoBnA{B~@mAdCcEb@aAhF_Jj@w@~@{AbBwCxJgPdAaBd@URYRi@\\mBdAiDJKHCT@VJ~@n@",
+"average_heartrate": 138.6,
+"average_speed": 3.155,
+"source": "strava",
+"streak": 1
+},
+{
+"run_id": 13712017103,
+"name": "\u5348\u540e\u884c\u8d70",
+"distance": 1202.8,
+"moving_time": "0:16:39",
+"type": "Hike",
+"start_date": "2025-02-21 08:19:53+00:00",
+"start_date_local": "2025-02-21 16:19:53",
+"location_country": "\u5e94\u9f99\u8def, \u5e94\u9f99\u793e\u533a, \u4e2d\u548c\u8857\u9053, \u9ad8\u65b0\u533a\uff08\u5357\u533a\uff09, \u53cc\u6d41\u533a, \u6210\u90fd\u5e02, \u56db\u5ddd\u7701, 610093, \u4e2d\u56fd",
+"summary_polyline": "s_kyDuejzRCj@JzAJvLC~AWn@w@j@{@IkAfBwABIhAHjAAF[f@cCnCoBbC{CnE",
+"average_heartrate": 107.2,
+"average_speed": 1.204,
+"source": "strava",
+"streak": 2
 }
 ]
