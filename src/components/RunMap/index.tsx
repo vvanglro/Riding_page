@@ -138,8 +138,24 @@ const RunMap = ({
     fallbackFullscreen,
     toggleFullscreen,
   } = useMapFullscreen(resizeMap);
-  const [lights, setLights] = useState(PRIVACY_MODE ? false : LIGHTS_ON);
+  // lights state: default from LIGHTS_ON, persisted in localStorage
+  // ('mapLights' = 'on' | 'off') so the user's lightbulb toggle survives reloads
+  const [lights, setLights] = useState(() => {
+    if (PRIVACY_MODE) return false;
+    if (typeof window === 'undefined') return LIGHTS_ON;
+    const saved = window.localStorage.getItem('mapLights');
+    if (saved !== null) return saved === 'on';
+    return LIGHTS_ON;
+  });
   const lightsRef = useRef(lights);
+  // persist the user's lightbulb toggle so it survives reloads
+  useEffect(() => {
+    try {
+      window.localStorage.setItem('mapLights', lights ? 'on' : 'off');
+    } catch {
+      // storage unavailable (private mode etc.) — keep in-memory only
+    }
+  }, [lights]);
   const [mapGeoData, setMapGeoData] =
     useState<FeatureCollection<RPGeometry> | null>(null);
   const isLoadingMapDataRef = useRef(false);
