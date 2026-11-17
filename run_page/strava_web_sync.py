@@ -102,7 +102,7 @@ class WebActivity:
         self.elapsed_time = datetime.timedelta(seconds=elapsed_secs)
         self.start_date = raw.get("start_time", "")
         # start_date_local_raw is a Unix timestamp -> local date string
-        self.start_date_local = _fmt_local_date(raw.get("start_date_local_raw"))
+        self.start_date_local = _fmt_local_date(raw)
         self.elevation_gain = raw.get("elevation_gain_raw") or 0.0
         self.source = "strava"
 
@@ -128,12 +128,30 @@ class WebActivity:
         self.map = run_map(self.summary_polyline)
 
 
-def _fmt_local_date(ts):
-    """Unix timestamp -> 'YYYY-MM-DD HH:MM:SS' in BASE_TIMEZONE."""
+def _fmt_local_date(raw):
+    """Format local date 'YYYY-MM-DD HH:MM:SS' in BASE_TIMEZONE.
+
+    Prefers the true-UTC `start_time` ISO string (e.g.
+    "2026-03-23T00:28:07+0000") and converts it to BASE_TIMEZONE.
+    Falls back to `start_date_local_raw`, which is the athlete's local
+    wall clock encoded as a naive UTC epoch — do NOT apply another
+    timezone shift on it (that used to add +8h twice, see #fix).
+    """
+    local_tz = pytz.timezone(BASE_TIMEZONE)
+    start_time = raw.get("start_time") if isinstance(raw, dict) else None
+    if start_time:
+        try:
+            s = str(start_time).replace("+0000", "+00:00")
+            dt = datetime.datetime.fromisoformat(s)
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=datetime.UTC)
+            return dt.astimezone(local_tz).strftime("%Y-%m-%d %H:%M:%S")
+        except ValueError:
+            pass
+    ts = raw.get("start_date_local_raw") if isinstance(raw, dict) else raw
     if not ts:
         return ""
-    local_tz = pytz.timezone(BASE_TIMEZONE)
-    dt = datetime.datetime.fromtimestamp(int(ts), tz=datetime.UTC).astimezone(local_tz)
+    dt = datetime.datetime.fromtimestamp(int(ts), tz=datetime.UTC)
     return dt.strftime("%Y-%m-%d %H:%M:%S")
 
 
