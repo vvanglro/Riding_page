@@ -251,7 +251,9 @@ export const INDOOR_COLOR = '#8899aa';
 
 // map tiles vendor, maptiler or mapbox or stadiamaps
 // if you want to use maptiler, set the access token in MAP_TILE_ACCESS_TOKEN
-export const MAP_TILE_VENDOR = 'mapcn';
+// 'mapcn' here is actually CARTO OSM basemaps: slow in CN and labels are latin.
+// 'mapbox' + MapboxLanguage(zh-Hans) gives Chinese labels and fast tiles.
+export const MAP_TILE_VENDOR = 'mapbox';
 
 // map tiles style name, see MAP_TILE_STYLES for more details
 export const MAP_TILE_STYLE_LIGHT = 'osm-bright';
@@ -260,8 +262,10 @@ export const MAP_TILE_STYLE_DARK = 'dark-matter';
 // access token. you can apply a new one, it's free.
 // maptiler: Gt5R0jT8tuIYxW6sNrAg | sign up at https://cloud.maptiler.com/auth/widget
 // stadiamaps: 8a769c5a-9125-4936-bdcf-a6b90cb5d0a4 | sign up at https://client.stadiamaps.com/signup/
-// mapcn: empty
-export const MAP_TILE_ACCESS_TOKEN = '';
+// mapbox: reuse the public MAPBOX_TOKEN above (only used to silence the
+// vendor validation warning; the actual map token is passed via
+// mapboxAccessToken prop in RunMap)
+export const MAP_TILE_ACCESS_TOKEN = MAPBOX_TOKEN;
 
 export const MAP_TILE_STYLES = {
   mapcn: {
@@ -324,6 +328,10 @@ export const MAP_TILE_STYLES = {
     'light-v11': 'mapbox://styles/mapbox/light-v11',
     'navigation-night': 'mapbox://styles/mapbox/navigation-night-v1',
     'satellite-streets-v12': 'mapbox://styles/mapbox/satellite-streets-v12',
+    // theme aliases: map MAP_TILE_STYLE_LIGHT/DARK names to mapbox styles
+    // (use v10 styles, proven to work with MapboxLanguage zh-Hans)
+    'osm-bright': 'mapbox://styles/mapbox/light-v10',
+    'dark-matter': 'mapbox://styles/mapbox/dark-v10',
   },
   default: 'mapbox://styles/mapbox/dark-v10',
 };
