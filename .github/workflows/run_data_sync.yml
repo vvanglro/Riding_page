@@ -6,7 +6,7 @@ on:
     - cron: '0 0 * * *'
   push:
     branches:
-      - master
+      - main
     paths:
       - run_page/nike_sync.py
       - run_page/nike_to_strava_sync.py
@@ -23,28 +23,31 @@ on:
       - run_page/keep_to_strava_sync.py
       - run_page/oppo_sync.py
       - run_page/intervals_icu_sync.py
+      - run_page/xingzhe_sync.py
       - requirements.txt
 
 env:
   # please change to your own config.
-  RUN_TYPE: pass # support strava/google_health/nike/garmin/coros/garmin_cn/garmin_sync_cn_global/keep/only_gpx/only_fit/nike_to_strava/strava_to_garmin/tcx_to_garmin/strava_to_garmin_cn/garmin_to_strava/garmin_to_strava_cn/oppo/intervals_icu/db_updater, Please change the 'pass' it to your own
-  ATHLETE: ben_29
-  TITLE: Workouts
+  RUN_TYPE: strava # support strava/google_health/nike/garmin/coros/garmin_cn/garmin_sync_cn_global/keep/only_gpx/only_fit/nike_to_strava/strava_to_garmin/tcx_to_garmin/strava_to_garmin_cn/garmin_to_strava/garmin_to_strava_cn/oppo/intervals_icu/db_updater, Please change the 'pass' it to your own
+  ATHLETE: vvanglro
+  TITLE: Rides
   MIN_GRID_DISTANCE: 10 # change min distance here
-  TITLE_GRID: Over 10km Workouts # also here
+  TITLE_GRID: Over 10km Rides # also here
+  GITHUB_NAME: vvanglro # change to yours
+  GITHUB_EMAIL: vvanglro@gmail.com # change to yours
 
   # IGNORE_BEFORE_SAVING: True # if you want to ignore some data before saving, set this to True
-  IGNORE_START_END_RANGE: 0 # Unit meter
+  IGNORE_START_END_RANGE: 10 # Unit meter
   # Dont making this huge, just picking points you needing. https://developers.google.com/maps/documentation/utilities/polylineutility using this tool to making your polyline
-  IGNORE_POLYLINE: ""
-  IGNORE_RANGE: 0 # Unit meter
+  IGNORE_POLYLINE: 'ktjrFoemeU~IorGq}DeB'
+  IGNORE_RANGE: 10 # Unit meter
   USE_CLOUDFLARE_WARP: false # If you want to use Cloudflare WARP to bypass network restrictions, set it to `true`. Currently only Garmin needs this.
   SAVE_DATA_IN_GITHUB_CACHE: false # if you deploy in the vercel, check the README
   DATA_CACHE_PREFIX: 'track_data'
-  BUILD_GH_PAGES: true # If you do not need GitHub Page please set it to `false`
+  BUILD_GH_PAGES: false # If you do not need GitHub Page please set it to `false`
   SAVE_TO_PARQENT: false # If you want to save the data to the repo, set it to `true`
-  GENERATE_MONTH_OF_LIFE: true # If you want to generate the month of life, set it to `true`
-  BIRTHDAY_MONTH: 1994-12 # If you want to generate the month of life, set it to your birthday month, format is YYYY-MM
+  GENERATE_MONTH_OF_LIFE: false # If you want to generate the month of life, set it to `true` and configure BIRTHDAY_MONTH below
+  # BIRTHDAY_MONTH: 1990-01 # your birthday month, format is YYYY-MM
 
 jobs:
   sync:
@@ -111,6 +114,11 @@ jobs:
           restore-keys: |
             ${{ env.DATA_CACHE_PREFIX }}-${{ github.sha }}-
             ${{ env.DATA_CACHE_PREFIX }}-
+
+      - name: Run sync Xingzhe script
+        if: env.RUN_TYPE == 'xingzhe'
+        run: |
+          python run_page/xingzhe_sync.py ${{ secrets.XINGZHE_MOBILE }} ${{ secrets.XINGZHE_PASSWORD }}
 
       - name: Run sync Nike script
         if: env.RUN_TYPE == 'nike'
@@ -311,7 +319,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit -m 'Add new workouts' || echo 'nothing to commit'
+          git commit -m 'update new runs' || echo 'nothing to commit'
           git push || echo 'nothing to push'
 
       - name: Set Output

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd" version="1.1" creator="gpx.py -- https://github.com/tkrajina/gpxpy">
+  <metadata>
+    <name>2023-09-21 下午  骑行</name>
+    <desc>行者骑行软件</desc>
+    <time>2023-09-21T19:34:27Z</time>
+    <keywords>行者骑行软件</keywords>
+  </metadata>
+  <trk>
+    <name>行者骑行软件</name>
+    <src>xingzhe</src>
+    <number>140770538</number>
+    <type>Ride</type>
+    <trkseg>
+      <trkpt lat="30.541608" lon="104.086935">
+        <ele>480.0</ele>
+        <time>2023-09-21T19:34:27Z</time>
+      </trkpt>
+      <trkpt lat="30.541489" lon="104.08684">
+        <ele>479.5</ele>
+        <time>2023-09-21T19:34:29Z</time>
+      </trkpt>
+      <trkpt lat="30.541532" lon="104.087108">
+        <ele>478.3</ele>
+        <time>2023-09-21T19:34:32Z</time>
+      </trkpt>
+      <trkpt lat="30.541653" lon="104.087033">
+        <ele>478.0</ele>
+        <time>2023-09-21T19:34:41Z</time>
+      </trkpt>
+      <trkpt lat="30.541706" lon="104.087037">
+        <ele>478.0</ele>
+        <time>2023-09-21T19:35:03Z</time>
+      </trkpt>
+      <trkpt lat="30.54187" lon="104.087118">
+        <ele>478.2</ele>
+        <time>2023-09-21T19:35:48Z</time>
+      </trkpt>
+      <trkpt lat="30.542035" lon="104.087162">
+        <ele>478.5</ele>
+        <time>2023-09-21T19:35:53Z</time>
+      </trkpt>
+      <trkpt lat="30.542219" lon="104.087246">
+        <ele>479.2</ele>
+        <time>2023-09-21T19:36:01Z</time>
+      </trkpt>
+      <trkpt lat="30.54233" lon="104.087377">
+        <ele>478.7</ele>
+        <time>2023-09-21T19:36:08Z</time>
+      </trkpt>
+      <trkpt lat="30.542374" lon="104.087524">
+        <ele>477.9</ele>
+        <time>2023-09-21T19:36:22Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
