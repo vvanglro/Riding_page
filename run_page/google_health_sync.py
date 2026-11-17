@@ -364,7 +364,9 @@ def _enrich_tcx(tcx_data, data_point):
     try:
         root = ET.parse(io.BytesIO(tcx_data)).getroot()
         ns = ET.QName(root).namespace
-        tag = lambda name: f"{{{ns}}}{name}" if ns else name
+
+        def tag(name):
+            return f"{{{ns}}}{name}" if ns else name
 
         activity_el = root.find(f".//{tag('Activity')}")
         if activity_el is None:

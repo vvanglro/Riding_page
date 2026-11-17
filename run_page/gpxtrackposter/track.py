@@ -218,7 +218,9 @@ class Track:
             tree = lxml.etree.parse(file_name)
             root = tree.getroot()
             ns = lxml.etree.QName(root).namespace
-            tag = lambda name: f"{{{ns}}}{name}" if ns else name
+
+            def tag(name):
+                return f"{{{ns}}}{name}" if ns else name
 
             # Injected ExerciseType → precise activity type
             ext_type_el = root.find(

@@ -55,6 +55,12 @@ run_page = "run_page.tui.app:main"
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
+[tool.ruff.lint]
+# Pin to the historical ruff default rule set.
+# ruff >= 0.17 greatly expanded its default rules, which would fail CI on
+# pre-existing upstream code. Keep the original selection explicitly.
+select = ["E4", "E7", "E9", "F"]
+
 
 [tool.pdm]
 distribution = true
