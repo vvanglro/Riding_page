@@ -6,9 +6,10 @@ Why this exists:
     (training_activities list + per-activity streams) still work with a
     logged-in web session, so this script syncs data through those instead.
 
-Login (password preferred, JWT cookie as fallback):
-    STRAVA_EMAIL + STRAVA_PASSWORD -> fresh login on every run (never expires)
+Login (JWT cookie preferred):
     STRAVA_JWT                    -> strava_remember_token cookie (~30 days)
+    STRAVA_EMAIL + STRAVA_PASSWORD -> fallback only; Strava currently blocks
+                                      unattended password login (reCAPTCHA)
 
 Endpoints used:
     GET /athlete/training_activities?page=N   -> paginated activity list
@@ -185,28 +186,31 @@ def _fetch_streams(client, aid):
 
 
 def _login(jwt=None, email=None, password=None):
-    """Log in with account password first, fall back to a JWT cookie.
+    """Log in with a JWT cookie first; password login only as a fallback.
 
-    Password login creates a fresh session on every run, so there is no
-    30-day cookie to rotate. If Strava blocks the login (e.g. a new IP
-    triggers a verification challenge), an existing JWT still keeps syncing.
+    Note (2026-11): Strava's web login now requires reCAPTCHA and uses a
+    one-time-code/Next.js flow. Unattended password login from scripts and CI
+    is rejected (HTTP 403 on /session and /login/request_otp), so the
+    supported path is a browser-refreshed STRAVA_JWT cookie. Password login
+    stays here in case Strava ever relaxes this.
     """
     failures = []
-    if email and password:
-        try:
-            client = WebClient(email=email, password=password)
-            print("Web login ok (account password)")
-            return client
-        except Exception as e:  # LoginFailed, network errors, CSRF changes...
-            failures.append(f"password login: {type(e).__name__}: {e}")
-            print(f"Password login failed, trying JWT cookie: {e}", file=sys.stderr)
     if jwt:
         try:
             client = WebClient(jwt=jwt)
-            print("Web login ok (JWT cookie fallback)")
+            print("Web login ok (JWT cookie)")
+            return client
+        except Exception as e:  # expired/invalid cookie, network errors...
+            failures.append(f"JWT login: {type(e).__name__}: {e}")
+            print(f"JWT login failed, trying password: {e}", file=sys.stderr)
+    if email and password:
+        try:
+            client = WebClient(email=email, password=password)
+            print("Web login ok (account password fallback)")
             return client
         except Exception as e:
-            failures.append(f"JWT login: {type(e).__name__}: {e}")
+            failures.append(f"password login: {type(e).__name__}: {e}")
+            print(f"Password login failed: {e}", file=sys.stderr)
     if not failures:
         raise ValueError(
             "Either a JWT (strava_remember_token cookie) or both email and "

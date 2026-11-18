@@ -155,11 +155,10 @@ jobs:
         # If you only want to sync 'type running' modify args --sync-types running, default script is to sync all data (rides, hikes and runs).
 
       # Strava web sync: website endpoints via session cookie, no paid API needed.
-      # Login priority: account password (STRAVA_EMAIL + STRAVA_PASSWORD) first.
-      # A fresh session is created on every run, so no 30-day cookie rotation.
-      # STRAVA_JWT (strava_remember_token cookie) is only a fallback for when
-      # password login is blocked (e.g. Strava challenges a new IP), and can
-      # be removed once password login proves stable.
+      # STRAVA_JWT (strava_remember_token cookie from a logged-in browser) is
+      # the supported path — refresh it ~every 30 days. Strava now puts
+      # reCAPTCHA on web login, so password login from CI is rejected;
+      # STRAVA_EMAIL/STRAVA_PASSWORD are kept only as a fallback.
       - name: Run sync Strava web script
         if: env.RUN_TYPE == 'strava_web'
         env:
