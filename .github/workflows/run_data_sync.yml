@@ -1,4 +1,4 @@
-﻿name: Run Data Sync
+name: Run Data Sync
 
 on:
   workflow_dispatch:
@@ -104,7 +104,7 @@ jobs:
 
       - name: Cache Data Files
         if: env.SAVE_DATA_IN_GITHUB_CACHE == 'true'
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             activities
