@@ -1,18 +1,22 @@
-"""Strava web-sync: pull activities via Strava's web endpoints (JWT session).
+"""Strava web-sync: pull activities via Strava's web endpoints (web session).
 
 Why this exists:
-    The Strava API application (OAuth2) can be in an "inactive" state, causing
-    every REST API request to return 403. The web endpoints (training_activities
-    list + per-activity streams) still work with a logged-in session (the
-    strava_remember_token JWT), so this script syncs data through those instead.
+    Since 2026-06-01 Strava requires a paid subscription for API access, and
+    previously issued API keys were deactivated. The web endpoints
+    (training_activities list + per-activity streams) still work with a
+    logged-in web session, so this script syncs data through those instead.
 
-Endpoints used (both verified working with a JWT session cookie):
+Login (password preferred, JWT cookie as fallback):
+    STRAVA_EMAIL + STRAVA_PASSWORD -> fresh login on every run (never expires)
+    STRAVA_JWT                    -> strava_remember_token cookie (~30 days)
+
+Endpoints used:
     GET /athlete/training_activities?page=N   -> paginated activity list
     GET /activities/{id}/streams              -> per-activity streams (latlng, heartrate, ...)
 
 Usage:
-    python run_page/strava_web_sync.py <jwt> [--days 60] [--only-run]
-    # jwt = value of the strava_remember_token cookie (from the browser)
+    python run_page/strava_web_sync.py --days 7
+    # credentials come from env vars STRAVA_EMAIL/STRAVA_PASSWORD or STRAVA_JWT
 """
 
 import argparse
@@ -180,17 +184,39 @@ def _fetch_streams(client, aid):
     return resp.json()
 
 
-def run_strava_web_sync(jwt=None, days=7, only_run=False, email=None, password=None):
+def _login(jwt=None, email=None, password=None):
+    """Log in with account password first, fall back to a JWT cookie.
+
+    Password login creates a fresh session on every run, so there is no
+    30-day cookie to rotate. If Strava blocks the login (e.g. a new IP
+    triggers a verification challenge), an existing JWT still keeps syncing.
+    """
+    failures = []
+    if email and password:
+        try:
+            client = WebClient(email=email, password=password)
+            print("Web login ok (account password)")
+            return client
+        except Exception as e:  # LoginFailed, network errors, CSRF changes...
+            failures.append(f"password login: {type(e).__name__}: {e}")
+            print(f"Password login failed, trying JWT cookie: {e}", file=sys.stderr)
     if jwt:
-        client = WebClient(jwt=jwt)
-    elif email and password:
-        client = WebClient(email=email, password=password)
-    else:
+        try:
+            client = WebClient(jwt=jwt)
+            print("Web login ok (JWT cookie fallback)")
+            return client
+        except Exception as e:
+            failures.append(f"JWT login: {type(e).__name__}: {e}")
+    if not failures:
         raise ValueError(
             "Either a JWT (strava_remember_token cookie) or both email and "
             "password are required to log in to Strava"
         )
-    print("Web login ok")
+    raise RuntimeError("Strava web login failed:\n  " + "\n  ".join(failures))
+
+
+def run_strava_web_sync(jwt=None, days=7, only_run=False, email=None, password=None):
+    client = _login(jwt, email, password)
 
     session = init_db(SQL_FILE)
     cutoff = time.time() - days * 86400
